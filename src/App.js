@@ -9,7 +9,7 @@ import Register from "./pages/Register/Register";
 
 function App() {
   return (
-    <div>
+    <div className="py-4">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
