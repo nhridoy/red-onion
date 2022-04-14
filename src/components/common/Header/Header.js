@@ -25,7 +25,7 @@ const Header = () => {
       </div>
       <menu
         id="menu"
-        className="-translate-x-96 md:transform-none h-full w-1/2 md:w-auto md:h-auto bg-white drop-shadow-lg md:drop-shadow-none md:bg-transparent absolute md:static transition-all translate-10 flex flex-col md:flex-row items-center gap-8"
+        className="-translate-x-96 md:transform-none z-10 h-full w-1/2 md:w-auto md:h-auto bg-white drop-shadow-lg md:drop-shadow-none md:bg-transparent absolute md:static transition-all translate-10 flex flex-col md:flex-row items-center gap-8"
       >
         <li>
           <Link to="/cart" className="cursor-pointer text-3xl hidden md:block">
