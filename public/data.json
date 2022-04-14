@@ -1,0 +1,143 @@
+{
+  "breakfast": {
+    "name": "Breakfast",
+    "items": [
+      {
+        "id": 1,
+        "name": "Begal and cream cheese",
+        "info": "Beef, eggs, cheese, and cream cheese",
+        "image": "https://i.ibb.co/JFxMXkM/breakfast4.png",
+        "price": 6.99
+      },
+      {
+        "id": 2,
+        "name": "Brealfast Sandwich",
+        "info": "Sandwich with egg, cheese, and bacon",
+        "image": "https://i.ibb.co/cFR6B5s/breakfast2.png",
+        "price": 9.99
+      },
+      {
+        "id": 3,
+        "name": "Baked Chicken",
+        "info": "Chicken, eggs, and cheese",
+        "image": "https://i.ibb.co/745jgpw/breakfast3.png",
+        "price": 10.99
+      },
+      {
+        "id": 4,
+        "name": "Eggs Benedict",
+        "info": "Eggs, ham, and cheese",
+        "image": "https://i.ibb.co/XyrKmv7/breakfast1.png",
+        "price": 8.99
+      },
+      {
+        "id": 5,
+        "name": "Toast Croissant Fried egg",
+        "info": "Toast, croissant, fried egg, and cheese",
+        "image": "https://i.ibb.co/gzMkDKt/breakfast6.png",
+        "price": 19.99
+      },
+      {
+        "id": 6,
+        "name": "Full Breakfast Fried egg Toast Brunch",
+        "info": "Fried egg, toast, croissant, and cheese",
+        "image": "https://i.ibb.co/ykH2FTM/breakfast5.png",
+        "price": 3.99
+      }
+    ]
+  },
+  "lunch": {
+    "name": "Lunch",
+    "items": [
+      {
+        "id": 1,
+        "name": "Healthy Meal Plan",
+        "info": "Salad, Chicken, and more",
+        "image": "https://i.ibb.co/0VKnGC1/lunch6.png",
+        "price": 23.99
+      },
+      {
+        "id": 2,
+        "name": "Fried Chicken Bento",
+        "info": "Chicken, rice, and more",
+        "image": "https://i.ibb.co/YTsgh81/lunch5.png",
+        "price": 9.99
+      },
+      {
+        "id": 3,
+        "name": "Tarragon-Rubbed-Salmon",
+        "info": "Salmon, rice, and more",
+        "image": "https://i.ibb.co/FnYBjBR/lunch3.png",
+        "price": 6.99
+      },
+      {
+        "id": 4,
+        "name": "Indian Lunch",
+        "info": "Rice, curry, and more",
+        "image": "https://i.ibb.co/6wzrFr3/lunch4.png",
+        "price": 8.99
+      },
+      {
+        "id": 5,
+        "name": "Beef Steak",
+        "info": "Beef, tomato, and more",
+        "image": "https://i.ibb.co/HdD9Djs/lunch1.png",
+        "price": 15.99
+      },
+      {
+        "id": 6,
+        "name": "Honey-Soy-Glazed Salmon with Pepper",
+        "info": "Salmon, soy sauce, and more",
+        "image": "https://i.ibb.co/2jWxWg2/lunch2.png",
+        "price": 7.99
+      }
+    ]
+  },
+  "dinner": {
+    "name": "Dinner",
+    "items": [
+      {
+        "id": 1,
+        "name": "Salmon with Grapefruit and Lentil Salad",
+        "info": "Salmon, grapefruit, and lentil salad",
+        "image": "https://i.ibb.co/9t6Cwm5/dinner6.png",
+        "price": 9.99
+      },
+      {
+        "id": 2,
+        "name": "Lemony Salmon Piccata",
+        "info": "Salmon, lemon, and more",
+        "image": "https://i.ibb.co/ykWm6Rw/dinner2.png",
+        "price": 10.99
+      },
+      {
+        "id": 3,
+        "name": "Pork Tenderloin with Quinoa Pilaf",
+        "info": "Pork, quinoa, and more",
+        "image": "https://i.ibb.co/qD6rTNN/dinner5.png",
+        "price": 12.99
+      },
+      {
+        "id": 4,
+        "name": "French Fries with cheese",
+        "info": "Fries, cheese, and more",
+        "image": "https://i.ibb.co/K7zhP86/dinner4.png",
+        "price": 8.99
+      },
+      {
+        "id": 5,
+        "name": "Garlic Butter Baked Salmon",
+        "info": "Salmon, garlic butter, and more",
+        "image": "https://i.ibb.co/DW12vNb/dinner3.png",
+        "price": 6.99
+      },
+      {
+        "id": 6,
+        "name": "Baked Chicken",
+        "info": "Chicken, cheese, and more",
+        "image": "https://i.ibb.co/BqpXrXM/dinner1.png",
+        "price": 9.99
+      }
+    ]
+  }
+}
