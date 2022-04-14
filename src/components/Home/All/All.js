@@ -1,10 +1,26 @@
 import React from "react";
+import useData from "../../../utils/useData";
 import FoodCard from "../../common/FoodCard/FoodCard";
 
 const All = () => {
+  const { data } = useData();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-10 md:px-16">
-      <FoodCard />
+      {Object.keys(data).length &&
+        [...data.breakfast, ...data.lunch, ...data.dinner].map(
+          (item, index) => (
+            <FoodCard
+              key={item.id}
+              id={item.id}
+              type={item.type}
+              name={item.name}
+              info={item.info}
+              image={item.image}
+              price={item.price}
+            />
+          )
+        )}
     </div>
   );
 };
