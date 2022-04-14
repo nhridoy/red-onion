@@ -5,6 +5,7 @@ const Body = () => {
   return (
     <div className="p-16">
       <div className="flex justify-center font-semibold gap-10">
+        <NavLink to="/">All</NavLink>
         <NavLink to="/breakfast">Breakfast</NavLink>
         <NavLink to="/lunch">Lunch</NavLink>
         <NavLink to="/dinner">Dinner</NavLink>
