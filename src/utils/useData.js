@@ -15,6 +15,11 @@ const useData = () => {
         setDinner(data.dinner);
       });
   }, []);
-  return { data, breakfast, lunch, dinner };
+  return {
+    data: [...breakfast, ...lunch, ...dinner],
+    breakfast,
+    lunch,
+    dinner,
+  };
 };
 export default useData;

@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import useData from "../../../utils/useData";
 import FoodCard from "../../common/FoodCard/FoodCard";
+import FoodModal from "../../common/FoodModal/FoodModal";
 
 const All = () => {
   const { data } = useData();
+  const [modal, setModal] = useState(false);
+  const [id, setId] = useState(null);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-10 md:px-16">
-      {Object.keys(data).length &&
-        [...data.breakfast, ...data.lunch, ...data.dinner].map(
-          (item, index) => (
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-10 md:px-16">
+        {data.map((item, index) => (
+          <div className="" key={item.id} onClick={() => setId(index)}>
             <FoodCard
-              key={item.id}
+              customClickEvent={toggleModal}
               id={item.id}
               type={item.type}
               name={item.name}
@@ -19,9 +25,11 @@ const All = () => {
               image={item.image}
               price={item.price}
             />
-          )
-        )}
-    </div>
+          </div>
+        ))}
+      </div>
+      <FoodModal modal={modal} toggleModal={toggleModal} data={data} id={id} />
+    </>
   );
 };
 

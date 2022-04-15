@@ -1,11 +1,13 @@
 import React from "react";
-import logo from "../../../images/Group 1152.png";
 import { BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const FoodCard = ({ id, type, name, info, image, price }) => {
+const FoodCard = ({ customClickEvent, id, type, name, info, image, price }) => {
   return (
-    <div className="flex flex-col gap-4 items-center justify-center rounded-xl py-10 bg-white hover:drop-shadow-xl">
+    <div
+      onClick={customClickEvent}
+      className="cursor-pointer flex flex-col gap-4 items-center justify-center rounded-xl py-10 bg-white hover:drop-shadow-xl"
+    >
       <img src={image} alt={name} className="w-1/2" />
       <div className="flex flex-col justify-center items-center">
         <Link to={`item/${id}`} className="font-semibold text-rose-500">
