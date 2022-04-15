@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import FoodItem from "./components/common/FoodItem/FoodItem";
 import Footer from "./components/common/Footer/Footer";
 import Header from "./components/common/Header/Header";
 import All from "./components/Home/All/All";
@@ -26,7 +25,6 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/item/:id" element={<FoodItem />} />
       </Routes>
       <Footer />
     </div>

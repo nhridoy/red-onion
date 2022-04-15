@@ -28,12 +28,17 @@ const Header = () => {
           isOpen ? "left-0" : "-left-[100vw]"
         } h-full w-full md:w-auto md:h-auto bg-white md:bg-transparent transition-all duration-300 ease-in-out flex flex-col md:flex-row items-center gap-8 fixed md:static top-0 z-10`}
       >
-        <span className="flex md:hidden justify-end text-xl w-full">
-          <span onClick={toggleMenu} className="p-4 cursor-pointer">
+        <span className="flex md:hidden justify-between items-center p-4 text-xl w-full">
+          <div className="w-36">
+            <Link to="/">
+              <img src={logo} alt="Logo" />
+            </Link>
+          </div>
+          <span onClick={toggleMenu} className="p-2 cursor-pointer">
             ✖
           </span>
         </span>
-        <div className=" hidden md:block">
+        <div className="hidden md:block">
           <Link to="/cart" className="cursor-pointer text-3xl">
             <BiCart />
           </Link>

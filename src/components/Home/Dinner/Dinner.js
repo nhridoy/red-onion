@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useData from "../../../utils/useData";
+import useData from "../../../hooks/useData";
 import FoodCard from "../../common/FoodCard/FoodCard";
 import FoodModal from "../../common/FoodModal/FoodModal";
 

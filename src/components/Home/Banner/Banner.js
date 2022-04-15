@@ -18,10 +18,10 @@ const Banner = () => {
       <div className="block relative">
         <input
           type="text"
-          className="bg-white py-2 px-4 md:w-96 rounded-full"
+          className="bg-white py-2 px-4 md:w-96 rounded-full focus:outline-none"
           placeholder="Search Food Items"
         />
-        <button className="absolute right-0 bg-rose-500 hover:bg-rose-700 text-white py-2 px-4 rounded-full">
+        <button className="absolute focus:outline-none right-0 bg-rose-500 hover:bg-rose-700 text-white py-2 px-4 rounded-full">
           Search
         </button>
       </div>
