@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { BiCart } from "react-icons/bi";
+import { addFoodToCart } from "../../../utils/cartStorage";
 
 const FoodModal = ({ modal, toggleModal, data, id }) => {
   const [selected, setSelected] = useState();
+  const [amount, setAmount] = useState(1);
   useEffect(() => {
     setSelected(id);
   }, [id]);
 
   const handleClick = (selectedId) => {
     setSelected(selectedId);
+  };
+
+  const handleIncrease = () => {
+    setAmount(amount + 1);
+  };
+
+  const handleDecrease = () => {
+    if (amount > 1) {
+      setAmount(amount - 1);
+    }
+  };
+
+  const addToCart = (id, amount) => {
+    addFoodToCart(id, amount);
   };
 
   return (
@@ -32,15 +48,30 @@ const FoodModal = ({ modal, toggleModal, data, id }) => {
             <div className="flex gap-4">
               <p className="text-4xl">${data[selected]?.price}</p>
               <div className="flex items-center text-xl gap-4 border rounded-full px-4">
-                <div id="minus">-</div>
-                <div id="count">1</div>
-                <div id="plus" className="text-rose-600">
+                <div
+                  onClick={handleDecrease}
+                  className={`${
+                    amount > 1
+                      ? "text-rose-600 cursor-pointer pointer-events-auto"
+                      : " pointer-events-none"
+                  } `}
+                >
+                  -
+                </div>
+                <div id="count">{amount}</div>
+                <div
+                  onClick={handleIncrease}
+                  className="text-rose-600 cursor-pointer"
+                >
                   +
                 </div>
               </div>
             </div>
             <div className="">
-              <button className="bg-rose-600 focus:outline-none text-white flex gap-2 items-center px-5 py-2 rounded-full">
+              <button
+                onClick={() => addToCart(selected, amount)}
+                className="bg-rose-600 focus:outline-none text-white flex gap-2 items-center px-5 py-2 rounded-full"
+              >
                 <BiCart className=" text-2xl" />
                 <span>Add</span>
               </button>
