@@ -2,9 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../images/logo2.png";
 import { BiMenuAltRight, BiCart } from "react-icons/bi";
+import { getCart } from "../../../utils/cartStorage";
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const cart = getCart();
+  let cartLength = 0;
+  cart.forEach((item) => {
+    cartLength += item.quantity;
+  });
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -16,10 +23,13 @@ const Header = () => {
             <img src={logo} alt="Logo" />
           </Link>
         </div>
-        <div className="flex items-center gap-2 text-3xl md:hidden block">
+        <div className="flex items-center gap-2 text-3xl md:hidden block relative">
           <Link to="/cart" className="cursor-pointer">
             <BiCart />
           </Link>
+          <div className="w-5 h-5 absolute top-0 right-7 text-sm flex items-center justify-center bg-rose-600 text-white rounded-full">
+            {cartLength}
+          </div>
           <BiMenuAltRight onClick={toggleMenu} className="cursor-pointer" />
         </div>
       </div>
@@ -38,10 +48,13 @@ const Header = () => {
             ✖
           </span>
         </span>
-        <div className="hidden md:block">
-          <Link to="/cart" className="cursor-pointer text-3xl">
+        <div className="hidden md:block relative">
+          <Link to="/cart" className="cursor-pointer text-3xl ">
             <BiCart />
           </Link>
+          <div className="w-5 h-5 absolute top-0 -right-3 text-sm flex items-center justify-center bg-rose-600 text-white rounded-full">
+            {cartLength}
+          </div>
         </div>
         <div>
           <Link to="/login">Login</Link>
