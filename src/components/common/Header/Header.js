@@ -4,9 +4,9 @@ import logo from "../../../images/logo2.png";
 import { BiMenuAltRight, BiCart } from "react-icons/bi";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
   const toggleMenu = () => {
-    const menu = document.querySelector("#menu");
-    menu.classList.toggle("-translate-x-96");
+    setIsOpen(!isOpen);
   };
   return (
     <div className="container mx-auto flex flex-col md:flex-row md:justify-between md:items-center p-4">
@@ -23,27 +23,33 @@ const Header = () => {
           <BiMenuAltRight onClick={toggleMenu} className="cursor-pointer" />
         </div>
       </div>
-      <menu
-        id="menu"
-        className="-translate-x-96 md:transform-none z-10 h-full w-1/2 md:w-auto md:h-auto bg-white drop-shadow-lg md:drop-shadow-none md:bg-transparent absolute md:static transition-all translate-10 flex flex-col md:flex-row items-center gap-8"
+      <div
+        className={`${
+          isOpen ? "left-0" : "-left-[100vw]"
+        } h-full w-full md:w-auto md:h-auto bg-white md:bg-transparent transition-all duration-300 ease-in-out flex flex-col md:flex-row items-center gap-8 fixed md:static top-0 z-10`}
       >
-        <li>
-          <Link to="/cart" className="cursor-pointer text-3xl hidden md:block">
+        <span className="flex md:hidden justify-end text-xl w-full">
+          <span onClick={toggleMenu} className="p-4 cursor-pointer">
+            ✖
+          </span>
+        </span>
+        <div className=" hidden md:block">
+          <Link to="/cart" className="cursor-pointer text-3xl">
             <BiCart />
           </Link>
-        </li>
-        <li>
+        </div>
+        <div>
           <Link to="/login">Login</Link>
-        </li>
-        <li>
+        </div>
+        <div>
           <Link
             className="bg-rose-600 px-6 py-2 text-white rounded-full"
             to="/register"
           >
             Register
           </Link>
-        </li>
-      </menu>
+        </div>
+      </div>
     </div>
   );
 };
