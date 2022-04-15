@@ -21,10 +21,33 @@ const removeFoodFromCart = (food) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
+const updateFoodCart = (food, amount) => {
+  const cart = getCart();
+  const foodInCart = cart.find((item) => item.item === food);
+  if (foodInCart) {
+    foodInCart.quantity = amount;
+    if (foodInCart.quantity < 1) {
+      deleteFoodFromCart(food);
+    } else {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }
+};
+
+const deleteFoodFromCart = (food) => {
+  const cart = getCart();
+  const foodInCart = cart.find((item) => item.item === food);
+  if (foodInCart) {
+    cart.splice(cart.indexOf(foodInCart), 1);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
 const getCart = () => {
   return localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [];
 };
 
-export { addFoodToCart, removeFoodFromCart, getCart };
+export { addFoodToCart, removeFoodFromCart, updateFoodCart, getCart };

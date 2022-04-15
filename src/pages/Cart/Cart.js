@@ -1,12 +1,25 @@
-import React from "react";
-import { CartCounterContext } from "../../App";
+import React, { useContext, useEffect, useState } from "react";
+import { CartCounterContext, FoodContext } from "../../App";
+import { getCart, updateFoodCart } from "../../utils/cartStorage";
 
 const Cart = () => {
-  const { cart } = React.useContext(CartCounterContext);
-  console.log(cart);
+  const [cartItems, setCartItems] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+  const [total, setTotal] = useState(0);
+  const { data } = useContext(FoodContext);
+  const { cartLength, setCartLength } = useContext(CartCounterContext);
+  const cart = getCart();
+
+  useEffect(() => {
+    const items = data.filter((item) =>
+      cart.some((cartItem) => cartItem.item === item.id)
+    );
+    setCartItems(items);
+  }, [cart]);
+
   return (
-    <div className="grid md:grid-cols-2 gap-10 container mx-auto p-20">
-      <div className="flex flex-col gap-8">
+    <div className="grid md:grid-cols-2 gap-10 container mx-auto p-10 md:p-20">
+      <div className="flex flex-col gap-8 order-2 md:order-1">
         <h3 className="border-b-[1px] border-rose-600 text-xl leading-10">
           Enter Delivery Address
         </h3>
@@ -57,12 +70,65 @@ const Cart = () => {
           </button>
         </form>
       </div>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 order-1 md:order-2">
         <h3 className="border-b-[1px] border-rose-600 text-xl leading-10">
           Order Summary
         </h3>
         <div className="flex flex-col gap-4">
-          <div className="grid grid-cols-3 bg-gray-400"></div>
+          {cartItems.map((item, index) => {
+            const storageCart = cart.find(
+              (cartItem) => cartItem.item === item.id
+            );
+            return (
+              <div
+                key={index}
+                className="grid gap-2 grid-cols-5 bg-gray-100 p-4 items-center"
+              >
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-20 col-span-1"
+                />
+                <div className="flex flex-col gap-2 col-span-2 md:col-span-3">
+                  <h3 className="text-sm">{item.name}</h3>
+                  <p className="text-gray-600 ">
+                    ${item.price} x {storageCart?.quantity}
+                  </p>
+                  <p className="text-rose-600 font-semibold">
+                    ${(item.price * storageCart?.quantity).toFixed(2)}
+                  </p>
+                </div>
+
+                <div className="flex col-span-2 md:col-span-1">
+                  <div className="flex items-center">
+                    <button
+                      onClick={() => (
+                        updateFoodCart(item.id, storageCart?.quantity - 1),
+                        setCartLength(cartLength - 1)
+                      )}
+                      className="rounded-full bg-rose-600 hover:bg-rose-700 focus:outline-none text-white flex gap-2 items-center w-8 h-8 flex items-center justify-center"
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="p-2">{storageCart?.quantity}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <button
+                      onClick={() => (
+                        updateFoodCart(item.id, storageCart.quantity + 1),
+                        setCartLength(cartLength + 1)
+                      )}
+                      className="rounded-full bg-rose-600 hover:bg-rose-700 focus:outline-none text-white flex gap-2 items-center w-8 h-8 flex items-center justify-center"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
