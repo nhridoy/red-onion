@@ -1,16 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../images/logo2.png";
 import { BiMenuAltRight, BiCart } from "react-icons/bi";
-import { getCart } from "../../../utils/cartStorage";
+import { CartCounter } from "../../../App";
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const cart = getCart();
-  let cartLength = 0;
-  cart.forEach((item) => {
-    cartLength += item.quantity;
-  });
+  const { cartLength } = useContext(CartCounter);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

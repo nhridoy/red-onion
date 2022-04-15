@@ -1,3 +1,4 @@
+import React, { createContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/common/Footer/Footer";
@@ -10,10 +11,22 @@ import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import { getCart } from "./utils/cartStorage";
+
+export const CartCounter = createContext(0);
 
 function App() {
+  const cart = getCart();
+  const [cartLength, setCartLength] = React.useState(0);
+  let count = 0;
+  cart.forEach((item) => {
+    count += item.quantity;
+  });
+  useEffect(() => {
+    setCartLength(count);
+  }, [count]);
   return (
-    <div className="">
+    <CartCounter.Provider value={{ cartLength, setCartLength }}>
       <Header />
       <Routes>
         <Route path="/" element={<Home />}>
@@ -27,7 +40,7 @@ function App() {
         <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
-    </div>
+    </CartCounter.Provider>
   );
 }
 

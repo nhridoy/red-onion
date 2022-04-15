@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BiCart } from "react-icons/bi";
+import { CartCounter } from "../../../App";
 import { addFoodToCart } from "../../../utils/cartStorage";
 
 const FoodModal = ({ modal, toggleModal, data, id }) => {
   const [selected, setSelected] = useState();
   const [amount, setAmount] = useState(1);
+  const { cartLength, setCartLength } = useContext(CartCounter);
   useEffect(() => {
     setSelected(id);
   }, [id]);
@@ -25,6 +27,7 @@ const FoodModal = ({ modal, toggleModal, data, id }) => {
 
   const addToCart = (id, amount) => {
     addFoodToCart(id, amount);
+    setCartLength(cartLength + amount);
   };
 
   return (
