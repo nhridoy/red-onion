@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../images/logo2.png";
 import { BiMenuAltRight, BiCart } from "react-icons/bi";
-import { CartCounter } from "../../../App";
+import { CartCounterContext } from "../../../App";
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const { cartLength } = useContext(CartCounter);
+  const { cartLength } = useContext(CartCounterContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

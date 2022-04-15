@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import useData from "../../../hooks/useData";
+import React, { useContext, useState } from "react";
+import { FoodContext } from "../../../App";
 import FoodCard from "../../common/FoodCard/FoodCard";
 import FoodModal from "../../common/FoodModal/FoodModal";
 
 const Breakfast = () => {
-  const { breakfast } = useData();
+  const { breakfast } = useContext(FoodContext);
   const [modal, setModal] = useState(false);
   const [id, setId] = useState(null);
   const toggleModal = () => {
