@@ -22,9 +22,17 @@ function App() {
   const cart = getCart();
   const [cartLength, setCartLength] = React.useState(0);
   let count = 0;
-  cart.forEach((item) => {
-    count += item.quantity;
-  });
+
+  for (const id in cart) {
+    if (Object.hasOwnProperty.call(cart, id)) {
+      count += cart[id];
+    }
+  }
+
+  // Object.keys(cart).forEach((item) => {
+  //   // count += item.quantity;
+  //   console.log(item);
+  // });
   useEffect(() => {
     setCartLength(count);
   }, [count]);

@@ -1,10 +1,13 @@
 const addFoodToCart = (food, amount) => {
   const cart = getCart();
-  const foodInCart = cart.find((item) => item.item === food);
+  let foodInCart;
+  Object.keys(cart).length &&
+    (foodInCart = Object.keys(cart).find((item) => item === food));
+
   if (foodInCart) {
-    foodInCart.quantity += amount;
+    cart[food] += amount;
   } else {
-    cart.push({ item: food, quantity: amount });
+    cart[food] = amount;
   }
   localStorage.setItem("cart", JSON.stringify(cart));
 };
@@ -13,8 +16,8 @@ const removeFoodFromCart = (food) => {
   const cart = getCart();
   const foodInCart = cart.find((item) => item === food);
   if (foodInCart) {
-    foodInCart.quantity -= 1;
-    if (foodInCart.quantity === 0) {
+    foodInCart.food -= 1;
+    if (foodInCart.food === 0) {
       cart.splice(cart.indexOf(foodInCart), 1);
     }
   }
@@ -25,8 +28,8 @@ const updateFoodCart = (food, amount) => {
   const cart = getCart();
   const foodInCart = cart.find((item) => item.item === food);
   if (foodInCart) {
-    foodInCart.quantity = amount;
-    if (foodInCart.quantity < 1) {
+    foodInCart.food = amount;
+    if (foodInCart.food < 1) {
       deleteFoodFromCart(food);
     } else {
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -47,7 +50,7 @@ const deleteFoodFromCart = (food) => {
 const getCart = () => {
   return localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
-    : [];
+    : {};
 };
 
 export { addFoodToCart, removeFoodFromCart, updateFoodCart, getCart };

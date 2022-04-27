@@ -73,7 +73,7 @@ const FoodModal = ({ modal, toggleModal, data, id }) => {
             <div className="">
               <button
                 onClick={() => (
-                  addToCart(data[selected]?.id, amount), setAmount(1)
+                  addToCart(data[selected]?._id, amount), setAmount(1)
                 )}
                 className="bg-rose-600 focus:outline-none text-white flex gap-2 items-center px-5 py-2 rounded-full"
               >
