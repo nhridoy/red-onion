@@ -16,7 +16,7 @@ const Header = () => {
       <div className="flex items-center justify-between">
         <div className="w-36">
           <Link to="/">
-            <img src={logo} alt="Logo" />
+            <img loading="lazy" src={logo} alt="Logo" />
           </Link>
         </div>
         <div className="flex items-center gap-2 text-3xl md:hidden block relative">
@@ -37,7 +37,7 @@ const Header = () => {
         <span className="flex md:hidden justify-between items-center p-4 text-xl w-full">
           <div className="w-36">
             <Link to="/">
-              <img src={logo} alt="Logo" />
+              <img loading="lazy" src={logo} alt="Logo" />
             </Link>
           </div>
           <span onClick={toggleMenu} className="p-2 cursor-pointer">

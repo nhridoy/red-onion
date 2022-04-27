@@ -6,13 +6,16 @@ const useData = () => {
   const [lunch, setLunch] = useState([]);
   const [dinner, setDinner] = useState([]);
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/foods")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        setBreakfast(data.breakfast);
-        setLunch(data.lunch);
-        setDinner(data.dinner);
+        const bf = data.filter((item) => item.type === "breakfast");
+        setBreakfast(bf);
+        const ln = data.filter((item) => item.type === "lunch");
+        setLunch(ln);
+        const dn = data.filter((item) => item.type === "dinner");
+        setDinner(dn);
       });
   }, []);
   return {

@@ -7,14 +7,29 @@ const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
   const [total, setTotal] = useState(0);
   const { data } = useContext(FoodContext);
-  const { cartLength, setCartLength } = useContext(CartCounterContext);
-  const cart = getCart();
+  const { cart, cartLength, setCartLength } = useContext(CartCounterContext);
+  // const cart = getCart();
 
   useEffect(() => {
     const items = data.filter((item) =>
       cart.some((cartItem) => cartItem.item === item.id)
     );
     setCartItems(items);
+    // items?.map((item) => {
+    //   cart.map((cartItem) => {
+    //     if (cartItem.item === item.id) {
+    //       setSubTotal((total) => total + item.price * cartItem.quantity);
+    //     }
+    //   });
+    // });
+    console.log("test");
+    let price = 0;
+    const prices = document.querySelectorAll(".prices");
+    prices.forEach((price) => {
+      price += parseFloat(price.innerText);
+      console.log(price);
+    });
+    setSubTotal(price);
   }, [cart]);
 
   return (
@@ -85,6 +100,7 @@ const Cart = () => {
                 className="grid gap-2 grid-cols-5 bg-gray-100 p-4 items-center"
               >
                 <img
+                  loading="lazy"
                   src={item.image}
                   alt={item.name}
                   className="w-20 col-span-1"
@@ -95,7 +111,10 @@ const Cart = () => {
                     ${item.price} x {storageCart?.quantity}
                   </p>
                   <p className="text-rose-600 font-semibold">
-                    ${(item.price * storageCart?.quantity).toFixed(2)}
+                    $
+                    <span className="prices">
+                      {(item?.price * storageCart?.quantity).toFixed(2)}
+                    </span>
                   </p>
                 </div>
 
@@ -129,6 +148,22 @@ const Cart = () => {
               </div>
             );
           })}
+        </div>
+        <div className="flex justify-between">
+          <p className="text-gray-600 font-semibold">Subtotal</p>
+          <p className="text-rose-600 font-semibold">${subTotal.toFixed(2)}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="text-gray-600 font-semibold">Tax</p>
+          <p className="text-rose-600 font-semibold">$0.00</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="text-gray-600 font-semibold">Delivery</p>
+          <p className="text-rose-600 font-semibold">$0.00</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="text-gray-600 font-semibold">Total</p>
+          <p className="text-rose-600 font-semibold">${total.toFixed(2)}</p>
         </div>
       </div>
     </div>

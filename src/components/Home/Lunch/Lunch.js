@@ -14,7 +14,7 @@ const Lunch = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-10 md:px-16">
         {lunch.map((item, index) => (
-          <div className="" key={item.id} onClick={() => setId(index)}>
+          <div className="" key={item._id} onClick={() => setId(index)}>
             <FoodCard
               customClickEvent={toggleModal}
               id={item.id}

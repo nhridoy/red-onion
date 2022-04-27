@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="bg-gray-800 text-white p-4">
       <div className="container mx-auto grid gap-10 md:grid-cols-4 p-4">
         <div className="col-span-2">
-          <img src={logo} alt="Logo" className="w-36" />
+          <img loading="lazy" src={logo} alt="Logo" className="w-36" />
         </div>
         <div className="col-span-1">
           <h3 className="text-xl">About</h3>

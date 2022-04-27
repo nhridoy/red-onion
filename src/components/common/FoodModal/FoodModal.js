@@ -84,6 +84,7 @@ const FoodModal = ({ modal, toggleModal, data, id }) => {
             <div className="flex gap-4">
               {[selected - 1] > -1 && (
                 <img
+                  loading="lazy"
                   onClick={() => handleClick(selected - 1)}
                   src={data[selected - 1]?.image}
                   alt={data[selected - 1]?.name}
@@ -92,6 +93,7 @@ const FoodModal = ({ modal, toggleModal, data, id }) => {
               )}
 
               <img
+                loading="lazy"
                 onClick={() => handleClick(selected)}
                 src={data[selected]?.image}
                 alt={data[selected]?.name}
@@ -99,6 +101,7 @@ const FoodModal = ({ modal, toggleModal, data, id }) => {
               />
               {[selected + 1] < data?.length && (
                 <img
+                  loading="lazy"
                   onClick={() => handleClick(selected + 1)}
                   src={data[selected + 1]?.image}
                   alt={data[selected + 1]?.name}
@@ -110,6 +113,7 @@ const FoodModal = ({ modal, toggleModal, data, id }) => {
         </div>
         <div className="flex flex-col justify-center items-center order-1 md:order-2">
           <img
+            loading="lazy"
             src={data[selected]?.image}
             alt={data[selected]?.name}
             className="w-2/3"
