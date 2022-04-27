@@ -17,7 +17,7 @@ const Breakfast = () => {
           <div className="" key={item._id} onClick={() => setId(index)}>
             <FoodCard
               customClickEvent={toggleModal}
-              id={item.id}
+              id={item._id}
               type={item.type}
               name={item.name}
               info={item.info}
